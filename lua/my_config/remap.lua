@@ -1,3 +1,5 @@
+local wk = require('which-key')
+
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
@@ -42,3 +44,47 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/my_config/packer.lua<CR>");
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
+vim.keymap.set("n", "gt", "<cmd>BufferLineCycleNext<CR>");
+vim.keymap.set("n", "gT", "<cmd>BufferLineCyclePrev<CR>");
+--mapping to close selected buffer
+vim.keymap.set("n", "<leader>q", "<cmd>BufferLinePickClose<CR>");
+
+vim.keymap.set("n", "<leader>1", "<cmd>BufferLineGoToBuffer 1<CR>");
+vim.keymap.set("n", "<leader>2", "<cmd>BufferLineGoToBuffer 2<CR>");
+vim.keymap.set("n", "<leader>3", "<cmd>BufferLineGoToBuffer 3<CR>");
+vim.keymap.set("n", "<leader>4", "<cmd>BufferLineGoToBuffer 4<CR>");
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+vim.keymap.set("n", "<leader>bn", "<cmd>enew<CR>");
+vim.keymap.set("n", "<leader>nt", "<cmd>terminal<CR>");
+
+wk.register({
+    ["<leader>"] = {
+        ["n"] = {
+            name = "new",
+            ["h"] = {
+                name = "horizontal",
+                ["s"] = "split",
+                ["t"] = "terminal",
+            },
+            ["v"] = {
+                name = "vertical",
+                ["s"] = "split",
+                ["t"] = "terminal",
+            },
+        },
+    },
+})
+--keymap to open new split
+vim.keymap.set("n", "<leader>nhs", "<cmd>split<CR>");
+vim.keymap.set("n", "<leader>nvs", "<cmd>vsplit<CR>");
+--keymap to open new split terminal
+vim.keymap.set("n", "<leader>nht", "<cmd>split | wincmd j | terminal<CR>");
+vim.keymap.set("n", "<leader>nvt", "<cmd>vsplit | wincmd l | terminal<CR>");
+
+--keymap to select another split
+
+
+
+
+vim.g.copilot_no_tab_map = true
+vim.api.nvim_set_keymap('i', '<C-j>', 'copilot#Accept("<CR>")', { silent = true, expr = true } )

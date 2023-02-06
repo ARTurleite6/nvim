@@ -1,4 +1,5 @@
 local lsp = require("lsp-zero")
+local wk = require("which-key")
 
 lsp.preset("recommended")
 
@@ -67,8 +68,20 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
+
 lsp.setup()
 
 vim.diagnostic.config({
     virtual_text = true,
 })
+--
+--whick-key register <leader>vca
+wk.register({
+    ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
+    ["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
+    ["<leader>vca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
+    ["<leader>vd"] = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Diagnostics" },
+    ["<leader>vrn"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
+    ["<leader>vrr"] = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" },
+    ["<leader>vws"] = { "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>", "Workspace Symbol" },
+}, { prefix = "<leader>" })
