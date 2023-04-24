@@ -13,10 +13,10 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "<leader>vwm", function()
-	require("vim-with-me").StartVimWithMe()
+    require("vim-with-me").StartVimWithMe()
 end)
 vim.keymap.set("n", "<leader>svwm", function()
-	require("vim-with-me").StopVimWithMe()
+    require("vim-with-me").StopVimWithMe()
 end)
 
 -- greatest remap ever
@@ -32,7 +32,6 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -57,8 +56,13 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 vim.keymap.set("n", "<leader>bn", "<cmd>enew<CR>");
 vim.keymap.set("n", "<leader>nt", "<cmd>terminal<CR>");
 
+--vim.keymap.set("n", "<leader>w", ":w<CR>");
+
 wk.register({
     ["<leader>"] = {
+        ["e"] = { ":NvimTreeToggle<CR>", "Open Tree" },
+        ["w"] = { ":w<CR>", "Save file" },
+        ["f"] = { vim.lsp.buf.format, "Format Document" },
         ["n"] = {
             name = "new",
             ["h"] = {
@@ -70,6 +74,18 @@ wk.register({
                 name = "vertical",
                 ["s"] = "split",
                 ["t"] = "terminal",
+            },
+        },
+        ["p"] = {
+            name = "project",
+            ["f"] = {
+                name = "find file",
+            },
+            ["v"] = {
+                name = "view",
+            },
+            ["s"] = {
+                name = "grep",
             },
         },
     },
@@ -87,4 +103,4 @@ vim.keymap.set("n", "<leader>nvt", "<cmd>vsplit | wincmd l | terminal<CR>");
 
 
 vim.g.copilot_no_tab_map = true
-vim.api.nvim_set_keymap('i', '<C-j>', 'copilot#Accept("<CR>")', { silent = true, expr = true } )
+vim.api.nvim_set_keymap('i', '<C-j>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
