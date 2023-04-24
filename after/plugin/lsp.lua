@@ -9,7 +9,6 @@ lsp.ensure_installed({
     'gopls',
     'clangd',
     'elixirls',
-    'sqls',
     'pyright'
 })
 
