@@ -42,9 +42,6 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/my_config/packer.lua<CR>");
-vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
-vim.keymap.set("n", "gt", "<cmd>BufferLineCycleNext<CR>");
-vim.keymap.set("n", "gT", "<cmd>BufferLineCyclePrev<CR>");
 --mapping to close selected buffer
 vim.keymap.set("n", "<leader>q", "<cmd>BufferLinePickClose<CR>");
 
@@ -53,18 +50,27 @@ vim.keymap.set("n", "<leader>2", "<cmd>BufferLineGoToBuffer 2<CR>");
 vim.keymap.set("n", "<leader>3", "<cmd>BufferLineGoToBuffer 3<CR>");
 vim.keymap.set("n", "<leader>4", "<cmd>BufferLineGoToBuffer 4<CR>");
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
-vim.keymap.set("n", "<leader>bn", "<cmd>enew<CR>");
 vim.keymap.set("n", "<leader>nt", "<cmd>terminal<CR>");
 
 --vim.keymap.set("n", "<leader>w", ":w<CR>");
 
 wk.register({
+    ["g"] = {
+        name = "Navigation Buffers",
+        ["t"] = {"<cmd>BufferLineCycleNext<CR>", "Next Buffer"},
+        ["T"] = {"<cmd>BufferLineCyclePrev<CR>", "Prev Buffer"},
+    },
     ["<leader>"] = {
         ["e"] = { ":NvimTreeToggle<CR>", "Open Tree" },
+        ["b"] = {
+            name = "Buffer",
+            ["n"] = { "<cmd>enew<CR>", "Create New Buffer" },
+            ["q"] = { "<cmd>bd<CR>", "Close Current Buffer" },
+        },
         ["w"] = { ":w<CR>", "Save file" },
         ["f"] = { vim.lsp.buf.format, "Format Document" },
         ["n"] = {
-            name = "new",
+            name = "New",
             ["h"] = {
                 name = "horizontal",
                 ["s"] = "split",
@@ -77,15 +83,15 @@ wk.register({
             },
         },
         ["p"] = {
-            name = "project",
+            name = "Project",
             ["f"] = {
-                name = "find file",
+                name = "Find file",
             },
             ["v"] = {
-                name = "view",
+                name = "View",
             },
             ["s"] = {
-                name = "grep",
+                name = "Grep",
             },
         },
     },
