@@ -1,1 +1,8 @@
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+require('which-key').register({
+    ["<leader>"] = {
+        ["g"] = {
+            name = "Git",
+            ["s"] = { vim.cmd.Git, "Git Status" },
+        }
+    },
+})

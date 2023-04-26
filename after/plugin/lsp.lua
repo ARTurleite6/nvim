@@ -1,6 +1,5 @@
 local lsp = require("lsp-zero")
 local wk = require("which-key")
-
 lsp.preset("recommended")
 
 lsp.ensure_installed({
@@ -11,6 +10,7 @@ lsp.ensure_installed({
     'elixirls',
     'pyright'
 })
+
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -39,21 +39,34 @@ lsp.set_preferences({
         info = 'I'
     }
 })
-
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
+    opts["mode"] = "n"
 
-    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-    vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-    vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-    vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-    vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-    vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-    vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-    vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+    wk.register({
+        ["<leader>"] = {
+            ["l"] = {
+                name = "LSP",
+                ["a"] = { vim.lsp.buf.code_action, "Code Actions" },
+                ["r"] = {
+                    name = "References/Rename",
+                    ["r"] = { vim.lsp.buf.references, "References" },
+                    ["n"] = { vim.lsp.buf.rename, "Rename" },
+                },
+                ["d"] = { vim.lsp.buf.open_float, "Open Definition Float" },
+                ["w"] = { vim.lsp.buf.workspace_symbol, "Workspace Symbol" },
+            },
+        },
+        ["]d"] = { vim.diagnostic.goto_next, "Go to next diagnostic" },
+        ["[d"] = { vim.diagnostic.goto_prev, "Go to previous diagnostic" },
+    }, opts)
+    --vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+    opts["mode"] = "i"
+    wk.register({
+        ["<C-h>"] = { vim.lsp.buf.signature_help, "Signature help" },
+    }, opts)
 end)
+
 
 
 lsp.setup()
@@ -61,14 +74,3 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true,
 })
---
---whick-key register <leader>vca
-wk.register({
-    ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
-    ["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
-    ["<leader>vca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
-    ["<leader>vd"] = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Diagnostics" },
-    ["<leader>vrn"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
-    ["<leader>vrr"] = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" },
-    ["<leader>vws"] = { "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>", "Workspace Symbol" },
-}, { prefix = "<leader>" })
