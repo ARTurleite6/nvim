@@ -1,6 +1,10 @@
 local wk = require('which-key')
 local telescope = require('telescope.builtin')
 
+vim.g.copilot_assume_mapped = true
+
+vim.api.nvim_set_keymap('i', '<C-J>', 'copilot#Accept()', { expr = true, silent = true, noremap = true })
+
 vim.g.mapleader = " "
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
