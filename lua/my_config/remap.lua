@@ -38,13 +38,7 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/my_config/packer.lua<CR>");
---mapping to close selected buffer
-vim.keymap.set("n", "<leader>q", "<cmd>BufferLinePickClose<CR>");
 
-vim.keymap.set("n", "<leader>1", "<cmd>BufferLineGoToBuffer 1<CR>");
-vim.keymap.set("n", "<leader>2", "<cmd>BufferLineGoToBuffer 2<CR>");
-vim.keymap.set("n", "<leader>3", "<cmd>BufferLineGoToBuffer 3<CR>");
-vim.keymap.set("n", "<leader>4", "<cmd>BufferLineGoToBuffer 4<CR>");
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 vim.keymap.set("n", "<leader>nt", "<cmd>terminal<CR>");
 
@@ -55,8 +49,6 @@ wk.register({
     ["K"] = { vim.lsp.buf.hover, "Hover" },
     ["g"] = {
         name = "Go To",
-        ["t"] = { "<cmd>BufferLineCycleNext<CR>", "Next Buffer" },
-        ["T"] = { "<cmd>BufferLineCyclePrev<CR>", "Prev Buffer" },
         ["d"] = { vim.lsp.buf.definition, "Go To Definition" },
     },
     ["<leader>"] = {

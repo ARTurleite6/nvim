@@ -15,9 +15,9 @@ wk.register({
     ["<leader>"] = {
         ["a"] = { mark.add_file, "Mark File at Harpoon" },
     },
-    ["<C-e>"] = { function() ui.nav_file(1) end, "Harpoon Go To 1 Markup" },
-    ["<C-h>"] = { function() ui.nav_file(2) end, "Harpoon Go To 2 Markup" },
-    ["<C-t>"] = { function() ui.nav_file(3) end, "Harpoon Go To 3 Markup" },
-    ["<C-n>"] = { function() ui.nav_file(4) end, "Harpoon Go To 4 Markup" },
-    ["<C-s>"] = { function() ui.nav_file(5) end, "Harpoon Go To 5 Markup" },
+    ["<C-e>"] = { function() ui.toggle_quick_menu() end, "Toggle Quick Menu" },
+    ["<C-h>"] = { function() ui.nav_file(1) end, "Harpoon Go To 1 Markup" },
+    ["<C-t>"] = { function() ui.nav_file(2) end, "Harpoon Go To 2 Markup" },
+    ["<C-n>"] = { function() ui.nav_file(3) end, "Harpoon Go To 3 Markup" },
+    ["<C-s>"] = { function() ui.nav_file(4) end, "Harpoon Go To 4 Markup" },
 })

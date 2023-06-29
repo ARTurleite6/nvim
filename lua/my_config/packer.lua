@@ -47,19 +47,8 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' }, -- Optional
         }
     }
-    use {
-        'nvim-tree/nvim-tree.lua',
-        requires = {
-            'nvim-tree/nvim-web-devicons', -- optional
-        },
-        config = function()
-            require("nvim-tree").setup {}
-        end
-    }
     use 'simrat39/rust-tools.nvim'
 
-    -- using packer.nvim
-    use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
     use "tiagovla/scope.nvim"
     use {
         'nvim-lualine/lualine.nvim',
@@ -78,4 +67,13 @@ return require('packer').startup(function(use)
     }
 
     use 'andweeb/presence.nvim'
+
+    use 'mfussenegger/nvim-dap'
+
+    use {
+        'saecki/crates.nvim',
+        ft = { "rust", "toml" }
+    }
+    --Packer
+    use { 'Issafalcon/lsp-overloads.nvim' }
 end)

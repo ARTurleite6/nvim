@@ -12,6 +12,10 @@ require('which-key').register({
                 end,
                 "Grep"
             },
+            ["v"] = {
+                vim.cmd.Ex,
+                "View"
+            }
         },
     }
 })

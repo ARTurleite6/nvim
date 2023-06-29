@@ -11,6 +11,7 @@ lsp.ensure_installed({
     'pyright'
 })
 
+require('lspconfig').hls.setup {}
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -53,7 +54,7 @@ lsp.on_attach(function(client, bufnr)
                     ["r"] = { vim.lsp.buf.references, "References" },
                     ["n"] = { vim.lsp.buf.rename, "Rename" },
                 },
-                ["d"] = { vim.lsp.buf.open_float, "Open Definition Float" },
+                ["d"] = { vim.diagnostic.open_float, "Open Definition Float" },
                 ["w"] = { vim.lsp.buf.workspace_symbol, "Workspace Symbol" },
             },
         },
