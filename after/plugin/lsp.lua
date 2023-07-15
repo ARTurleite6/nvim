@@ -7,13 +7,13 @@ lsp.ensure_installed({
     'rust_analyzer',
     'gopls',
     'clangd',
-    'elixirls',
     'pyright'
 })
 
 require('lspconfig').hls.setup {}
 
 local cmp = require('cmp')
+
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<S-TAB>'] = cmp.mapping.select_prev_item(cmp_select),
