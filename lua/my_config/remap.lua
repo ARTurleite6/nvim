@@ -54,8 +54,14 @@ wk.register({
     ["g"] = {
         name = "Go To",
         ["d"] = { vim.lsp.buf.definition, "Go To Definition" },
+        ["t"] = { "<cmd>BufferLineCycleNext<CR>", "Next Buffer" },
+        ["T"] = { "<cmd>BufferLineCyclePrev<CR>", "Previous Buffer" },
     },
     ["<leader>"] = {
+        ["1"] = { "<cmd>BufferLineGoToBuffer 1<CR>", "Go To Buffer 1" },
+        ["2"] = { "<cmd>BufferLineGoToBuffer 2<CR>", "Go To Buffer 2" },
+        ["3"] = { "<cmd>BufferLineGoToBuffer 3<CR>", "Go To Buffer 3" },
+        ["4"] = { "<cmd>BufferLineGoToBuffer 4<CR>", "Go To Buffer 4" },
         ["x"] = { "<cmd>!chmod +x %<CR>", "Give Executable permissions to File" },
         ["r"] = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Rename Word on file" },
         ["Y"] = { [["+Y]], "Copy rest of the line to clipboard" },
