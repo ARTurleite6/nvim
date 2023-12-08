@@ -1,18 +1,12 @@
 local lsp = require("lsp-zero")
 local wk = require("which-key")
+require('mason').setup({})
 lsp.preset("recommended")
-
-lsp.ensure_installed({
-    'tsserver',
-    'rust_analyzer',
-    'gopls',
-    'clangd',
-    'pyright'
-})
 
 require('lspconfig').hls.setup {}
 
 local cmp = require('cmp')
+local cmp_action = lsp.cmp_action()
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -27,8 +21,12 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
-lsp.setup_nvim_cmp({
-    mapping = cmp_mappings
+cmp.setup({
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert(cmp_mappings)
 })
 
 lsp.set_preferences({
@@ -68,7 +66,18 @@ lsp.on_attach(function(client, bufnr)
     }, opts)
 end)
 
-
+require('mason-lspconfig').setup({
+    ensure_installed = {
+        'tsserver',
+        'rust_analyzer',
+        'gopls',
+        'clangd',
+        'pyright'
+    },
+    handlers = {
+        lsp.default_setup,
+    }
+})
 
 lsp.setup()
 
