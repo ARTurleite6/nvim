@@ -1,3 +1,3 @@
-require("my_config.packer")
+require("my_config.lazy")
 require("my_config.remap")
 require("my_config.set")

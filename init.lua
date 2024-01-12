@@ -1,3 +1,1 @@
 require("my_config")
-
-

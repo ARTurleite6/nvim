@@ -38,6 +38,7 @@ lsp.set_preferences({
         info = 'I'
     }
 })
+
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
     opts["mode"] = "n"
@@ -78,6 +79,8 @@ require('mason-lspconfig').setup({
         lsp.default_setup,
     }
 })
+
+require('lspconfig').ocamlls.setup({})
 
 lsp.setup()
 
