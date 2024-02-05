@@ -9,10 +9,18 @@ if not vim.loop.fs_stat(lazypath) then
         lazypath,
     })
 end
+
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+    {
+        "mrcjkb/haskell-tools.nvim",
+        version = "^3",
+        ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
+    },
 
+    "elkowar/yuck.vim",
+    "github/copilot.vim",
     "tpope/vim-rails",
     "tpope/vim-endwise",
     {
