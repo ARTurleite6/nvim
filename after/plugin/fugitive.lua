@@ -3,6 +3,7 @@ require('which-key').register({
         ["g"] = {
             name = "Git",
             ["s"] = { vim.cmd.Git, "Git Status" },
+            ["p"] = { function() vim.cmd.Git("push") end, "Git Push" }
         }
     },
 })
