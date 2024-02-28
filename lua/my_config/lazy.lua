@@ -13,7 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    "stevearc/aerial.nvim",
+    "stevearc/oil.nvim",
     "elkowar/yuck.vim",
     "github/copilot.vim",
     "tpope/vim-rails",
