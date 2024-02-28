@@ -13,12 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    {
-        "mrcjkb/haskell-tools.nvim",
-        version = "^3",
-        ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
-    },
-
+    "stevearc/aerial.nvim",
     "elkowar/yuck.vim",
     "github/copilot.vim",
     "tpope/vim-rails",
