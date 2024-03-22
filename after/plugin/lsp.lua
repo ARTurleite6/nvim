@@ -5,10 +5,6 @@ lsp.preset("recommended")
 
 local lsp_config = require('lspconfig')
 
-lsp_config.elixirls.setup {
-    cmd = { "/home/arturl/dev/elixir-ls/language_server.sh" },
-}
-
 local cmp = require('cmp')
 local cmp_action = lsp.cmp_action()
 

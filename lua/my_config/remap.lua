@@ -73,12 +73,12 @@ wk.register({
             name = "New",
             ["h"] = {
                 name = "horizontal",
-                ["s"] = "screen",
+                ["b"] = "buffer",
                 ["t"] = "terminal",
             },
             ["v"] = {
                 name = "vertical",
-                ["s"] = "screen",
+                ["b"] = "buffer",
                 ["t"] = "terminal",
             },
         },
@@ -92,8 +92,8 @@ wk.register({
 }, { mode = { "n", "v" } })
 
 --keymap to open new split
-vim.keymap.set("n", "<leader>nhs", "<cmd>split<CR>");
-vim.keymap.set("n", "<leader>nvs", "<cmd>vsplit<CR>");
+vim.keymap.set("n", "<leader>nhb", "<cmd>split<CR>");
+vim.keymap.set("n", "<leader>nvb", "<cmd>vsplit<CR>");
 --keymap to open new split terminal
 vim.keymap.set("n", "<leader>nht", "<cmd>split | wincmd j | terminal<CR>");
 vim.keymap.set("n", "<leader>nvt", "<cmd>vsplit | wincmd l | terminal<CR>");
