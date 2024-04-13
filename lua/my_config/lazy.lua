@@ -50,7 +50,6 @@ require("lazy").setup({
     },
     "stevearc/oil.nvim",
     "elkowar/yuck.vim",
-    "github/copilot.vim",
     "tpope/vim-rails",
     "tpope/vim-endwise",
     {
@@ -101,13 +100,6 @@ require("lazy").setup({
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'kyazdani42/nvim-web-devicons', lazy = true }
-    },
-
-    {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
     },
 
     {

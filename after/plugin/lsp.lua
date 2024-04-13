@@ -79,8 +79,6 @@ require('mason-lspconfig').setup({
     }
 })
 
-require('lspconfig').ocamlls.setup({})
-
 lsp.setup()
 
 vim.diagnostic.config({
